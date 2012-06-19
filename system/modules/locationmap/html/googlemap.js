@@ -1,51 +1,50 @@
-(function($, google){
+(function($, window, undefined){
 
-	$.googlemap = {
+	window.googlemap = function(){
+			if (window.google === undefined) return;
 
-		init: function(){
 			// initialize Google Maps
 			var map_canvas = $('#map_canvas'),
 				map_info = {},
-				gmaps = google.maps,
+				gmaps = window.google.maps,
 				latlng = {}, centerlatlng = {}, options = {}, map = {}, infoWindow = {}, marker = {};
 
-			if (map_canvas.length) {
-				// custom infoWindow
-				map_info = $('#map_infoWindow');
+			if (!map_canvas.length) return;
 
-				var lat = map_info.data('lat'),
-					lng = map_info.data('lng');
+			// custom infoWindow
+			map_info = $('#map_infoWindow');
 
-				latlng = new gmaps.LatLng(lat, lng);
-				centerlatlng = new gmaps.LatLng(lat + 0.001, lng + 0.0001);
+			var lat = map_info.data('lat'),
+				lng = map_info.data('lng');
 
-				options = {
-					zoom: 16,
-					center: centerlatlng,
-					streetViewControl: false,
-					mapTypeId: gmaps.MapTypeId.ROADMAP
-				};
+			latlng = new gmaps.LatLng(lat, lng);
+			centerlatlng = new gmaps.LatLng(lat + 0.001, lng + 0.0001);
 
-				// initialize map
-				map = new gmaps.Map(map_canvas[0], options);
+			options = {
+				zoom: 16,
+				center: centerlatlng,
+				streetViewControl: false,
+				mapTypeId: gmaps.MapTypeId.ROADMAP
+			};
 
-				infoWindow = new gmaps.InfoWindow({
-					content: '<div class="infoWindow">'+map_info.html()+'</div>'
-				});
+			// initialize map
+			map = new gmaps.Map(map_canvas[0], options);
 
-				// marker
-				marker = new gmaps.Marker({
-					position: latlng,
-					map: map,
-					title: 'My title'
-				});
+			infoWindow = new gmaps.InfoWindow({
+				content: '<div class="infoWindow">'+map_info.html()+'</div>'
+			});
 
-				// show infoWindow
-				infoWindow.open(map, marker);
-			}
-		}
-	};
+			// marker
+			marker = new gmaps.Marker({
+				position: latlng,
+				map: map,
+				title: 'My title'
+			});
 
-	$.googlemap.init();
+			// show infoWindow
+			infoWindow.open(map, marker);
+		};
 
-})(jQuery, google);
+	window.googlemap();
+
+})(jQuery, window);
