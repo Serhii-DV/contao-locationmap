@@ -42,7 +42,7 @@ class ModuleLocationMap extends \Module
 
 		// js
 		$GLOBALS['TL_JAVASCRIPT'][] = 'https://maps.googleapis.com/maps/api/js?v=3&sensor=false';
-		$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/locationmap/assets/googlemap.min.js|all|static';
+		$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/locationmap/assets/googlemap.min.js|static';
 
 		$this->Template->latlng = deserialize($this->locmap_latlng);
 		$this->Template->infoText = $this->locmap_infoText;
