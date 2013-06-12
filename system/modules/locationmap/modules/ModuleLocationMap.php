@@ -45,6 +45,7 @@ class ModuleLocationMap extends \Module
 		$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/locationmap/assets/googlemap.min.js|static';
 
 		$this->Template->latlng = deserialize($this->locmap_latlng);
+		$this->Template->zoom = $this->locmap_zoom;
 		$this->Template->infoText = $this->locmap_infoText;
 	}
 }

@@ -18,7 +18,7 @@ $lang = &$GLOBALS['TL_LANG']['tl_module'];
 /**
  * Add palettes to tl_module
  */
-$dca['palettes']['locationmap']    = '{title_legend},name,type;{config_legend},locmap_latlng,locmap_infoText;{expert_legend:hide},cssID,space';
+$dca['palettes']['locationmap']    = '{title_legend},name,type;{config_legend},locmap_latlng,locmap_zoom,locmap_infoText;{expert_legend:hide},cssID,space';
 
 
 /**
@@ -31,6 +31,16 @@ $dca['fields']['locmap_latlng'] = array
 	'inputType'               => 'text',
 	'eval'                    => array('multiple'=>true, 'size'=>2, 'rgxp'=>'digit', 'nospace'=>true, 'tl_class'=>'w50'),
 	'sql'                     => "varchar(64) NOT NULL default ''"
+);
+
+$dca['fields']['locmap_zoom'] = array
+(
+	'label'                   => &$lang['locmap_zoom'],
+	'exclude'                 => true,
+	'default'                 => 18,
+	'inputType'               => 'text',
+	'eval'                    => array('size'=>2, 'rgxp'=>'digit', 'nospace'=>true, 'tl_class'=>'w50'),
+	'sql'                     => "int(10) unsigned NOT NULL default '0'"
 );
 
 $dca['fields']['locmap_infoText'] = array

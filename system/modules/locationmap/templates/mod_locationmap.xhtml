@@ -2,7 +2,7 @@
 <!--indexer::stop-->
 <div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
 	<div id="map-canvas"></div>
-	<div id="map-infowindow" data-lat="<?php echo $this->latlng[0]; ?>" data-lng="<?php echo $this->latlng[1]; ?>">
+	<div id="map-infowindow" data-lat="<?php echo $this->latlng[0]; ?>" data-lng="<?php echo $this->latlng[1]; ?>" data-zoom="<?php echo $this->zoom; ?>">
 		<?php echo $this->infoText; ?>
 	</div>
 </div>

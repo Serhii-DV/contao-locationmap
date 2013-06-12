@@ -4,11 +4,12 @@
 		var nodeInfo = $('#map-infowindow'),
 			lat = +nodeInfo.data('lat'),
 			lng = +nodeInfo.data('lng'),
+			zoom = +nodeInfo.data('zoom'),
 			pointerLatlng = new GMap.LatLng(lat, lng),
 			centerLatlng = new GMap.LatLng(lat + 0.0003, lng + 0.0001);
 
 		var mapOptions = {
-				zoom: 18,
+				zoom: zoom,
 				center: centerLatlng,
 				streetViewControl: false,
 				mapTypeId: GMap.MapTypeId.ROADMAP
