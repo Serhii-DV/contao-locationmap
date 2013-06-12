@@ -1,9 +1,9 @@
-(function(window, document, GMap, undefined){
+(function($, window, document, GMap, undefined){
 
 	function LocationMapInit() {
-		var nodeInfo = document.getElementById('map-infowindow'),
-			lat = +nodeInfo.dataset.lat,
-			lng = +nodeInfo.dataset.lng,
+		var nodeInfo = $('#map-infowindow'),
+			lat = +nodeInfo.data('lat'),
+			lng = +nodeInfo.data('lng'),
 			pointerLatlng = new GMap.LatLng(lat, lng),
 			centerLatlng = new GMap.LatLng(lat + 0.0003, lng + 0.0001);
 
@@ -16,7 +16,7 @@
 
 		var map = new GMap.Map(document.getElementById('map-canvas'), mapOptions),
 			infowindow = new GMap.InfoWindow({
-				content: '<div class="infoWindow">'+nodeInfo.innerHTML+'</div>'
+				content: '<div class="infoWindow">'+nodeInfo.html()+'</div>'
 			});
 
 		// marker
@@ -36,4 +36,4 @@
 
 	GMap.event.addDomListener(window, 'load', LocationMapInit);
 
-})(window, document, google.maps);
+})(jQuery, window, document, google.maps);
